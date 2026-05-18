@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "995238d9-c7e9-4934-99e0-a2e3eb7aebac",
+		"name": "User-management - Progetto FCG",
+		"description": "Collection con tutte le chiamate per provare il progetto (CRUD, ricerca e CSV)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crea Utente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"Mario\",\n  \"cognome\": \"Rossi\",\n  \"email\": \"mario.rossi@example.com\",\n  \"indirizzo\": \"Via Roma 10, Milano\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recupera Tutti gli Utenti",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recupera Utente per ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aggiorna Utente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"Mario Updated\",\n  \"cognome\": \"Rossi Updated\",\n  \"email\": \"mario.updated@example.com\",\n  \"indirizzo\": \"Via Nuova 22, Milano\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina Utente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ricerca Utenti - Senza Filtri",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/search",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ricerca Utenti - Per Nome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/search?nome=Mario",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Mario"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ricerca Utenti - Per Cognome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/search?cognome=Rossi",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "cognome",
+							"value": "Rossi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ricerca Utenti - Nome e Cognome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/search?nome=Mario&cognome=Rossi",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Mario"
+						},
+						{
+							"key": "cognome",
+							"value": "Rossi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Carica Utenti da CSV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "sample-data/users-csv-example.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/upload-csv",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"upload-csv"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8090"
+		}
+	]
+}

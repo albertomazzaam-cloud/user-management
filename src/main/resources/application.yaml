@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: user-management
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/usersdb
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
