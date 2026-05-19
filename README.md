@@ -14,11 +14,15 @@ Piccola applicazione Spring Boot per gestire utenti.
 
 ## Avvio rapido con Docker
 Per avviare sia l'immagine dell'app che il database PostgreSQL:
-`docker compose up --build`
+`docker compose up --build` (solo la prima volta)
+ `docker compose up` (successivamente)
+
 Per fermare i container:
 `docker compose stop`
+
 Per fermare e rimuovere i container:
 `docker compose down`
+`docker compose down -v` (per eliminare anche il volume) 
 
 API disponibile su `http://localhost:8090`.
 
